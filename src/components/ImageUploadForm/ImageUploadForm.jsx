@@ -233,8 +233,8 @@ export default function ImageUploadForm() {
     <div className="w-full max-w-xl">
       {/* Hiển thị kết quả sau khi Submit thành công */}
       {submittedResult ? (
-        <div className="rounded-2xl bg-white p-6 shadow-lg space-y-6 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 mb-2">
+        <div className="rounded-2xl bg-white p-4 sm:p-6 shadow-lg space-y-5 sm:space-y-6 text-center">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 mb-1">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
             </svg>
@@ -249,7 +249,7 @@ export default function ImageUploadForm() {
           <button
             type="button"
             onClick={handleResetForm}
-            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 font-medium text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 min-h-[44px] font-medium text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             Choose another image
           </button>
@@ -259,7 +259,7 @@ export default function ImageUploadForm() {
         <form
           noValidate
           onSubmit={handleSubmit(onSubmit)}
-          className="rounded-2xl bg-white p-6 shadow-lg space-y-5"
+          className="rounded-2xl bg-white p-4 sm:p-6 shadow-lg space-y-5"
         >
           {/* Controller cho trường 'image' (File gốc) */}
           <Controller
@@ -281,7 +281,7 @@ export default function ImageUploadForm() {
                   onDragEnter={handleDragEnter}
                   onDragLeave={handleDragLeave}
                   onDrop={(e) => handleDrop(e, field)}
-                  className={`relative rounded-xl border-2 border-dashed p-6 text-center transition-all cursor-pointer ${
+                  className={`relative rounded-xl border-2 border-dashed p-4 sm:p-6 text-center transition-all cursor-pointer ${
                     isDragging
                       ? 'border-indigo-600 bg-indigo-50/70 ring-4 ring-indigo-100 scale-[1.01]'
                       : errors.image
@@ -310,7 +310,7 @@ export default function ImageUploadForm() {
                   />
 
                   <svg
-                    className={`mx-auto h-10 w-10 transition-colors pointer-events-none ${
+                    className={`mx-auto h-9 w-9 sm:h-10 sm:w-10 transition-colors pointer-events-none ${
                       isDragging ? 'text-indigo-600' : 'text-slate-400'
                     }`}
                     stroke="currentColor"
@@ -325,7 +325,7 @@ export default function ImageUploadForm() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <div className="mt-3 text-sm text-slate-600 pointer-events-none">
+                  <div className="mt-2.5 sm:mt-3 text-sm text-slate-600 pointer-events-none">
                     <span className="font-semibold text-indigo-600">
                       {isDragging ? 'Drop file here' : 'Click to upload'}
                     </span>
@@ -353,7 +353,7 @@ export default function ImageUploadForm() {
           {/* Khung Crop: chỉ hiển thị khi đã chọn ảnh hợp lệ và chưa submit */}
           {rawImageUrl && (
             <div className="space-y-4 pt-2 border-t border-slate-100">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <span className="text-sm font-semibold text-slate-700">
                   Crop Image (400x400)
                 </span>
@@ -361,7 +361,7 @@ export default function ImageUploadForm() {
                   type="button"
                   onClick={handlePerformCrop}
                   disabled={isProcessingCrop}
-                  className="rounded-lg bg-indigo-600 px-4 py-1.5 text-sm font-semibold text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors cursor-pointer"
+                  className="rounded-lg bg-indigo-600 px-3.5 py-1.5 sm:px-4 sm:py-2 text-sm font-semibold text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors cursor-pointer shrink-0"
                 >
                   {isProcessingCrop ? 'Cropping...' : 'Crop'}
                 </button>
@@ -406,11 +406,11 @@ export default function ImageUploadForm() {
           />
 
           {/* Các nút hành động cuối form */}
-          <div className="flex gap-3 pt-2">
+          <div className="flex gap-2.5 sm:gap-3 pt-2">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 rounded-lg bg-indigo-600 px-4 py-2.5 font-semibold text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors cursor-pointer"
+              className="flex-1 rounded-lg bg-indigo-600 px-4 py-2.5 min-h-[44px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-50 transition-colors cursor-pointer"
             >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
@@ -419,7 +419,7 @@ export default function ImageUploadForm() {
               <button
                 type="button"
                 onClick={handleResetForm}
-                className="rounded-lg border border-slate-300 px-4 py-2.5 font-medium text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                className="rounded-lg border border-slate-300 px-4 py-2.5 min-h-[44px] font-medium text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
               >
                 Reset
               </button>

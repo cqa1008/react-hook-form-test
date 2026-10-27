@@ -20,8 +20,8 @@ export default function ImageCropper({
 }) {
   return (
     <div className="space-y-4">
-      {/* Khung chứa Cropper với tỉ lệ 1:1, cố định chiều cao và bo góc */}
-      <div className="relative h-80 w-full overflow-hidden rounded-xl bg-slate-900">
+      {/* Khung chứa Cropper với tỉ lệ 1:1, chiều cao linh hoạt trên mobile (h-64) và desktop (sm:h-80) */}
+      <div className="relative h-64 sm:h-80 w-full overflow-hidden rounded-xl bg-slate-900">
         <Cropper
           image={imageSrc}
           crop={crop}
@@ -34,8 +34,8 @@ export default function ImageCropper({
       </div>
 
       {/* Thanh trượt Zoom */}
-      <div className="flex items-center gap-3">
-        <label htmlFor="zoom-range" className="text-sm font-medium text-slate-700 whitespace-nowrap">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <label htmlFor="zoom-range" className="text-xs sm:text-sm font-medium text-slate-700 whitespace-nowrap">
           Zoom: {zoom.toFixed(1)}x
         </label>
         <input

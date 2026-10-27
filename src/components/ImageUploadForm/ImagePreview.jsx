@@ -26,24 +26,28 @@ export default function ImagePreview({ previewUrl, file }) {
   return (
     <div className="space-y-3">
       <h3 className="text-sm font-semibold text-slate-700">Preview (400x400):</h3>
-      <div className="flex flex-col items-center justify-center p-3 border border-slate-200 rounded-2xl bg-slate-50">
+      <div className="flex flex-col items-center justify-center p-3 sm:p-4 border border-slate-200 rounded-2xl bg-slate-50">
         <img
           src={previewUrl}
           alt="Cropped Preview"
           onLoad={handleImageLoad}
-          className="h-[400px] w-[400px] max-w-full rounded-xl border border-slate-200 object-cover shadow-sm bg-white"
+          className="w-full max-w-[400px] aspect-square rounded-xl border border-slate-200 object-cover shadow-sm bg-white"
         />
 
         {file && (
-          <div className="mt-3 text-center text-xs text-slate-600 space-y-1">
+          <div className="mt-3 text-center text-xs text-slate-600 space-y-1 w-full px-2">
             <p className="font-medium text-slate-800 break-all">{file.name}</p>
-            <p>
-              Dung lượng: <span className="font-semibold">{formatFileSize(file.size)}</span>
-              {' • '}
-              Kích thước thực: <span className="font-semibold">
-                {naturalDimensions
-                  ? `${naturalDimensions.width} x ${naturalDimensions.height} px`
-                  : 'Đang đọc...'}
+            <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5">
+              <span>
+                Dung lượng: <strong className="font-semibold text-slate-700">{formatFileSize(file.size)}</strong>
+              </span>
+              <span className="text-slate-400">•</span>
+              <span>
+                Kích thước thực: <strong className="font-semibold text-slate-700">
+                  {naturalDimensions
+                    ? `${naturalDimensions.width} x ${naturalDimensions.height} px`
+                    : 'Đang đọc...'}
+                </strong>
               </span>
             </p>
           </div>
